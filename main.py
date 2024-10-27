@@ -7,7 +7,7 @@ data = [{k : r[i] for i, k in enumerate(j['candles']['columns'])} for r in j['ca
 
 pd.DataFrame(data).to_csv('files/sber.csv')
 #print(j)
-print(pd.DataFrame(data))
+#print(pd.DataFrame(data))
 
 
 #frame = pd.DataFrame(data)
