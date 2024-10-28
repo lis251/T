@@ -26,6 +26,12 @@ data = [{k : r[i] for i, k in enumerate(j['candles']['columns'])} for r in j['ca
 
 pd.DataFrame(data).to_csv('files/tcsg.csv')
 
+
+j = requests.get('http://iss.moex.com/iss/engines/stock/markets/shares/securities/LKOH/candles.json?from=2024-01-01&till='+formatted_date+'&interval=24').json()
+data = [{k : r[i] for i, k in enumerate(j['candles']['columns'])} for r in j['candles']['data']]
+
+pd.DataFrame(data).to_csv('files/lkoh.csv')
+
 #print(j)
 #print(pd.DataFrame(data))
 
