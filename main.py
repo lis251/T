@@ -32,6 +32,14 @@ data = [{k : r[i] for i, k in enumerate(j['candles']['columns'])} for r in j['ca
 
 pd.DataFrame(data).to_csv('files/lkoh.csv')
 
+
+j = requests.get('http://iss.moex.com/iss/engines/stock/markets/shares/securities/AGRO/candles.json?from=2024-01-01&till='+formatted_date+'&interval=24').json()
+data = [{k : r[i] for i, k in enumerate(j['candles']['columns'])} for r in j['candles']['data']]
+
+pd.DataFrame(data).to_csv('files/agro.csv')
+
+
+
 #print(j)
 #print(pd.DataFrame(data))
 
