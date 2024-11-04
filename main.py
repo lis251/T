@@ -39,6 +39,36 @@ data = [{k : r[i] for i, k in enumerate(j['candles']['columns'])} for r in j['ca
 pd.DataFrame(data).to_csv('files/agro.csv')
 
 
+j = requests.get('http://iss.moex.com/iss/engines/stock/markets/shares/securities/TATN/candles.json?from=2024-01-01&till='+formatted_date+'&interval=24').json()
+data = [{k : r[i] for i, k in enumerate(j['candles']['columns'])} for r in j['candles']['data']]
+
+pd.DataFrame(data).to_csv('files/tatn.csv')
+
+
+j = requests.get('http://iss.moex.com/iss/engines/stock/markets/shares/securities/TRNFP/candles.json?from=2024-01-01&till='+formatted_date+'&interval=24').json()
+data = [{k : r[i] for i, k in enumerate(j['candles']['columns'])} for r in j['candles']['data']]
+
+pd.DataFrame(data).to_csv('files/trnfp.csv')
+
+
+j = requests.get('http://iss.moex.com/iss/engines/stock/markets/shares/securities/CHMF/candles.json?from=2024-01-01&till='+formatted_date+'&interval=24').json()
+data = [{k : r[i] for i, k in enumerate(j['candles']['columns'])} for r in j['candles']['data']]
+
+pd.DataFrame(data).to_csv('files/chmf.csv')
+
+
+j = requests.get('http://iss.moex.com/iss/engines/stock/markets/shares/securities/MAGN/candles.json?from=2024-01-01&till='+formatted_date+'&interval=24').json()
+data = [{k : r[i] for i, k in enumerate(j['candles']['columns'])} for r in j['candles']['data']]
+
+pd.DataFrame(data).to_csv('files/magn.csv')
+
+
+j = requests.get('http://iss.moex.com/iss/engines/stock/markets/shares/securities/UPRO/candles.json?from=2024-01-01&till='+formatted_date+'&interval=24').json()
+data = [{k : r[i] for i, k in enumerate(j['candles']['columns'])} for r in j['candles']['data']]
+
+pd.DataFrame(data).to_csv('files/upro.csv')
+
+
 
 #print(j)
 #print(pd.DataFrame(data))
