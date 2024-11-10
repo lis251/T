@@ -58,7 +58,8 @@ def main(instr):
     pd.DataFrame(data).to_csv('files/'+instr+'_10min.csv')
     print('Save - '+instr+'_10min.csv')
 
-if __name__ == "__main__":
+if __name__ == "__main__":    
+    main('YDEX')
     main('SBER')
     main('TCSG')
     main('LKOH')
