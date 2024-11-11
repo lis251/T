@@ -39,10 +39,10 @@ def main(instr):
         hour = dt_begin.hour
         minute_begin = dt_begin.minute
         minute_end = dt_end.minute
-        week_number = dt_begin.isocalendar()[1]
+        day_in_week = dt_begin.isoweekday()
         item['year']=year;
         item['month']=month;
-        item['day_in_week']=week_number;
+        item['day_in_week']=day_in_week;
         item['hour']=hour;
         item['min_begin']=minute_begin;
         item['min_end']=minute_end;
