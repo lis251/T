@@ -35,13 +35,14 @@ def main(instr):
         # Извлекаем нужные значения
         year = dt_begin.year
         month = dt_begin.month
-        day = dt_begin.day
+        week = dt_begin.day
         hour = dt_begin.hour
         minute_begin = dt_begin.minute
         minute_end = dt_end.minute
         day_in_week = dt_begin.isoweekday()
         item['year']=year;
         item['month']=month;
+        item['week']=week;
         item['day_in_week']=day_in_week;
         item['hour']=hour;
         item['min_begin']=minute_begin;
