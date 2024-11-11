@@ -35,7 +35,7 @@ def main(instr):
         # Извлекаем нужные значения
         year = dt_begin.year
         month = dt_begin.month
-        week = dt_begin.day
+        week = dt_begin.isocalendar()[1]
         hour = dt_begin.hour
         minute_begin = dt_begin.minute
         minute_end = dt_end.minute
