@@ -20,7 +20,7 @@ def main(instr):
     # Преобразуем её в строку в нужном формате
     formatted_date = today.strftime('%Y-%m-%d')
 
-    j = requests.get('http://iss.moex.com/iss/engines/stock/markets/shares/securities/'+instr+'/candles.json?from=2024-01-08&till='+formatted_date+'&interval=10').json()
+    j = requests.get('http://iss.moex.com/iss/engines/stock/markets/shares/securities/'+instr+'/candles.json?from=2024-10-01&till='+formatted_date+'&interval=10').json()
     data = [{k : r[i] for i, k in enumerate(j['candles']['columns'])} for r in j['candles']['data']]
 
     #for index, value in enumerate(my_list):
