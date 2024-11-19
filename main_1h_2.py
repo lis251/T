@@ -4,6 +4,7 @@ import datetime
 from matplotlib import pyplot as plt
 from datetime import datetime, timedelta
 import sys
+import csv
 
 
 class Item:
@@ -70,6 +71,7 @@ if __name__ == "__main__":
 
     instrAll= ['YDEX','SBER','TCSG','LKOH','AGRO','TATN','TRNFP','CHMF','MAGN','UPRO']
 
+    pd.DataFrame(instrAll).to_csv('files/instr_all.csv', index = False,header = False)
 
     for instr in instrAll:
 
