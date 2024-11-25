@@ -42,10 +42,12 @@ def main(instr,dateStart,dateEnd):
         minute_begin = dt_begin.minute
         minute_end = dt_end.minute
         day_in_week = dt_begin.isoweekday()
+        day_of_year = dt_begin.timetuple().tm_yday
         item['year']=year;
         item['month']=month;
         item['week']=week;
         item['day_in_week']=day_in_week;
+        item['day_in_year']=day_of_year;
         item['hour']=hour;
         item['min_begin']=minute_begin;
         item['min_end']=minute_end;
