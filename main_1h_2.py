@@ -83,7 +83,7 @@ if __name__ == "__main__":
         stepSart = timedelta(days=int(days))
         start_date = datetime.now()-stepSart
         current_date = datetime.now()
-        step = timedelta(days=5)
+        step = timedelta(days=4)
 
         date = start_date
         dataAll = []
