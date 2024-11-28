@@ -7,6 +7,11 @@ import sys
 import csv
 
 
+i_day_close=0
+i_day_open=0
+i_week_close=0
+
+
 class Item:
     def __init__(self, name, value):
         self.name = name
@@ -31,7 +36,7 @@ def main(instr,dateStart,dateEnd):
         
     # Перебираем массив и добавляем новый объект в каждый элемент
     new_items = []
-    for item in data:
+    for item in data:        
         dt_begin = datetime.strptime(item['begin'], "%Y-%m-%d %H:%M:%S")
         dt_end = datetime.strptime(item['end'], "%Y-%m-%d %H:%M:%S")
         # Извлекаем нужные значения
@@ -53,6 +58,10 @@ def main(instr,dateStart,dateEnd):
         item['min_end']=minute_end;
         if dateEnd<dt_begin:
             new_items.append(item)
+
+        # calc close prev day
+        i_day_close=day_in_week
+
         #new_item = Item(f"new_{item.name}", item.value + 500)
         #new_items.append(new_item)
 
@@ -71,11 +80,12 @@ if __name__ == "__main__":
     arguments = sys.argv[1:]
     days = arguments[0]
 
-    instrAll= ['YDEX','SBER','TCSG','LKOH','AGRO','TATN','TRNFP','CHMF','MAGN','UPRO']
+    instrAll= ['YDEX','SBER','TCSG','LKOH','AGRO','TATN','TRNFP','CHMF','MAGN','UPRO','OZON','MTS']
 
     pd.DataFrame(instrAll).to_csv('files/instr_all.csv', index = False,header = False)
 
     for instr in instrAll:
+
 
         # Устанавливаем начальную дату
         #start_date = datetime(2024, 1, 1)
