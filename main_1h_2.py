@@ -7,9 +7,15 @@ import sys
 import csv
 
 
-i_day_close=0
-i_day_open=0
-i_week_close=0
+i_day_close=1
+cost_day_close=0
+cost_day_close_tmp=0
+i_day_open=1
+cost_day_open=0
+i_week_close=1
+cost_week_close=0
+i_week_open=1
+cost_week_opene=0
 
 
 class Item:
@@ -64,6 +70,22 @@ def main(instr,dateStart,dateEnd):
 
         #new_item = Item(f"new_{item.name}", item.value + 500)
         #new_items.append(new_item)
+
+        if i_day_close==1:
+            i_day_close=day_of_year
+            item['back_close_day']=0
+
+        if i_day_close<day_in_year:
+            cost_day_close=cost_day_close_tmp
+            i_day_close=day_in_year
+            item['back_close_day']=cost_day_close
+        else
+            item['back_close_day']=cost_day_close
+            
+
+        cost_day_close_tmp=item['close']
+
+        
 
     return new_items;
         
