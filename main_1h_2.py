@@ -12,6 +12,7 @@ cost_day_close=0
 cost_day_close_tmp=0
 i_day_open=1
 cost_day_open=0
+cost_day_open_tmp=0
 i_week_close=1
 cost_week_close=0
 i_week_open=1
@@ -74,13 +75,17 @@ def main(instr,dateStart,dateEnd):
         if i_day_close==1:
             i_day_close=day_of_year
             item['back_close_day']=0
+            item['current_close_day']=0
 
         if i_day_close<day_in_year:
             cost_day_close=cost_day_close_tmp
             i_day_close=day_in_year
             item['back_close_day']=cost_day_close
+            cost_day_open_tmp=item['close']
+            item['current_close_day']=cost_day_open_tmp
         else
             item['back_close_day']=cost_day_close
+            item['current_close_day']=cost_day_open_tmp
             
 
         cost_day_close_tmp=item['close']
