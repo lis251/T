@@ -18,7 +18,6 @@ cost_week_close=0
 i_week_open=1
 cost_week_opene=0
 
-
 class Item:
     def __init__(self, name, value):
         self.name = name
@@ -28,6 +27,17 @@ class Item:
         return f"Item(name='{self.name}', value={self.value})"
 
 def main(instr,dateStart,dateEnd):
+
+    global i_day_close
+    global cost_day_close
+    global cost_day_close_tmp
+    global i_day_open
+    global cost_day_open
+    global cost_day_open_tmp
+    global i_week_close
+    global cost_week_close
+    global i_week_open
+    global cost_week_opene 
 
     #today = date.today()
 
@@ -77,20 +87,18 @@ def main(instr,dateStart,dateEnd):
             item['back_close_day']=0
             item['current_close_day']=0
 
-        if i_day_close<day_in_year:
+        if i_day_close<day_of_year:
             cost_day_close=cost_day_close_tmp
-            i_day_close=day_in_year
+            i_day_close=day_of_year
             item['back_close_day']=cost_day_close
             cost_day_open_tmp=item['close']
             item['current_close_day']=cost_day_open_tmp
-        else
+        else:
             item['back_close_day']=cost_day_close
             item['current_close_day']=cost_day_open_tmp
             
 
-        cost_day_close_tmp=item['close']
-
-        
+        cost_day_close_tmp=item['close']       
 
     return new_items;
         
@@ -107,7 +115,8 @@ if __name__ == "__main__":
     arguments = sys.argv[1:]
     days = arguments[0]
 
-    instrAll= ['YDEX','SBER','TCSG','LKOH','AGRO','TATN','TRNFP','CHMF','MAGN','UPRO','OZON','MTS']
+    #instrAll= ['YDEX','SBER','TCSG','LKOH','AGRO','TATN','TRNFP','CHMF','MAGN','UPRO','OZON','MTS']
+    instrAll= ['YDEX','SBER']
 
     pd.DataFrame(instrAll).to_csv('files/instr_all.csv', index = False,header = False)
 
