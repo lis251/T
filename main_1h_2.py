@@ -77,7 +77,7 @@ def main(instr,dateStart,dateEnd):
             new_items.append(item)
 
         # calc close prev day
-        i_day_close=day_in_week
+        #i_day_close=day_in_week
 
         #new_item = Item(f"new_{item.name}", item.value + 500)
         #new_items.append(new_item)
@@ -116,7 +116,7 @@ if __name__ == "__main__":
     days = arguments[0]
 
     #instrAll= ['YDEX','SBER','TCSG','LKOH','AGRO','TATN','TRNFP','CHMF','MAGN','UPRO','OZON','MTS']
-    instrAll= ['YDEX','SBER']
+    instrAll= ['SBER']
 
     pd.DataFrame(instrAll).to_csv('files/instr_all.csv', index = False,header = False)
 
