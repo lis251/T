@@ -6,7 +6,7 @@ from datetime import datetime, timedelta
 import sys
 import csv
 
-
+# for calc indikators
 i_day_close=1
 cost_day_close=0
 cost_day_close_tmp=0
@@ -17,6 +17,9 @@ i_week_close=1
 cost_week_close=0
 i_week_open=1
 cost_week_opene=0
+
+# for save last datatime of stocks
+lastPriceStocks={}
 
 class Item:
     def __init__(self, name, value):
@@ -39,10 +42,15 @@ def main(instr,dateStart,dateEnd):
     global i_week_open
     global cost_week_opene 
 
+    global lastPriceStocks
+
     #today = date.today()
+
 
     # Преобразуем её в строку в нужном формате
     #formatted_date = today.strftime('%Y-%m-%d')
+
+    print(dateStart)
 
     j = requests.get('http://iss.moex.com/iss/engines/stock/markets/shares/securities/'+instr+'/candles.json?from='+dateStart+'&interval=10').json()
     data = [{k : r[i] for i, k in enumerate(j['candles']['columns'])} for r in j['candles']['data']]
@@ -98,7 +106,11 @@ def main(instr,dateStart,dateEnd):
             item['current_close_day']=cost_day_open_tmp
             
 
-        cost_day_close_tmp=item['close']       
+        cost_day_close_tmp=item['close']     
+
+        # save last stock datetime
+        lastPriceStocks[instr]=item['begin'];
+          
 
     return new_items;
         
@@ -141,6 +153,13 @@ if __name__ == "__main__":
         
         pd.DataFrame(dataAll).to_csv('files/'+instr+'_10min.csv')
         print('Save - '+instr+'_10min.csv')
+
+        print(lastPriceStocks);
+    
+        # после пауза 2-мин, затем каждые 10 мин вызываем main() за день
+        # в main() проверяем дату котировки, если ана окажется больше последней, добавляем 
+        # если какойто индикатор окажется больше заначения, то отправляем письмо по почте
+        # в письме пишем 1- какой индмкатор какой акции в какую сторону превысил уровень 2- какие общие отклонения в % от закрытия прошлого дня / прошлого  4 час / 1 часа
     
 
 
